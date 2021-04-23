@@ -1,8 +1,11 @@
+import {useEffect} from 'react'
 import styled from "styled-components";
 import Head from "next/head";
 import { Button } from "@material-ui/core";
 import { auth, GoogleAuthProvider } from "../firebase";
+import {useRouter} from "next/router";
 function login() {
+  const router =useRouter();
   const Sigin = () => {
     auth
       .signInWithPopup(GoogleAuthProvider)
@@ -13,6 +16,9 @@ function login() {
         console.log(e);
       });
   };
+  useEffect(() => {
+    router.push(`/`)
+  }, [])
   return (
     <>
       <Head>

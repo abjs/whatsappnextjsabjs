@@ -7,7 +7,7 @@ import * as EmailValidator from "email-validator";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
-import  Chat  from "./Chat";
+import Chat from "./Chat";
 const Sidebar = () => {
   const [user] = useAuthState(auth);
   const userChatRef = db
@@ -41,37 +41,44 @@ const Sidebar = () => {
 
   return (
     <div>
+      <Header>
+        <StyledAvatar src={user.photoURL} onClick={() => auth.signOut()} />
+        <IconsContainer>
+          <IconButton>
+            <ChatIcon />
+          </IconButton>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </IconsContainer>
+      </Header>
+      <Search>
+        <SearchIcon />
+        <SearchInput placeholder="Search" />
+      </Search>
+      <SidebarButton onClick={createChat}>Start New Chat </SidebarButton>
       <Container>
-        <Header>
-          <StyledAvatar onClick={() => auth.signOut()} />
-          <IconsContainer>
-            <IconButton>
-              <ChatIcon />
-            </IconButton>
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          </IconsContainer>
-        </Header>
-        <Search>
-          <SearchIcon />
-          <SearchInput placeholder="Search" />
-        </Search>
-        <SidebarButton onClick={createChat}>Start New Chat </SidebarButton>
         {/* List of Chat */}
-        {
-          chatSnapshot?.docs.map((chat) =>(
-            <Chat key={chat.id} id={chat.id} user={chat.data().users} />
-          ))
-        }
+        {chatSnapshot?.docs.map((chat) => (
+          <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+        ))}
       </Container>
     </div>
   );
 };
 
 const Container = styled.div`
-  height: 100vh;
-  width: 30vw;
+  flex: 0.45;
+  height: 75vh;
+  min-width: 350px;
+  min-height: 350px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  --ms-overflow-style: none;
+  scrollbar-width: none;
+  /* width: 30vw; */
 `;
 const Header = styled.div`
   display: flex;
@@ -82,7 +89,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 2px solid gray;
+  border-bottom: 1px solid white;
   background-color: whitesmoke;
 `;
 const StyledAvatar = styled(Avatar)`
