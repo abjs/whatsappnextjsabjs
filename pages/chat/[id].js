@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
     ...chatRes.data(),
   };
 
-  console.log(chat, message);
+  // console.log(chat, message);
   return {
     props: {
       message: JSON.stringify(message),

@@ -57,7 +57,7 @@ export default function ChatScreen({ chat, message }) {
       displayName: user.displayName,
     });
 
-    console.log(input);
+    // console.log(input);
     setInput("");
     scrollToBottom();
   };
