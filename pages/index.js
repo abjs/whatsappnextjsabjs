@@ -29,8 +29,8 @@ export default function HomePage() {
                 <Image src="/vercel.jpg" />
               </List>
               <ContainerTitel>
-              <TitelInfo>Condact</TitelInfo>
-            </ContainerTitel>
+                <TitelInfo>Condact</TitelInfo>
+              </ContainerTitel>
               <UserInfo>
                 <a
                   href="https://github.com/abjs"
@@ -78,6 +78,9 @@ export default function HomePage() {
                   <MediaImages alt="Twitter" src="./twitter.png" />
                 </a>
               </UserInfo>
+            <ContainerEmail>
+              <TitelInfo>Start new chat at itsmeabjs@gmail.com this app</TitelInfo>
+            </ContainerEmail>
             </ContainerTechInfo>
           </ContainerBox>
         </IntroContainer>
@@ -91,14 +94,14 @@ const Container = styled.div`
 `;
 const Titel = styled.p`
   font-weight: bolder;
-  text-transform:uppercase;
+  text-transform: uppercase;
 
   font-size: 1rem;
 `;
 const TitelInfo = styled.p`
   font-weight: bold;
-  font-size: .8rem;
-  text-transform:uppercase;
+  font-size: 0.8rem;
+  text-transform: uppercase;
   text-align: center;
   margin-top: 10px;
 `;
@@ -118,6 +121,16 @@ const ContainerTitel = styled.div`
   border-radius: 20px;
   margin: 10px;
 `;
+const ContainerEmail = styled.div`
+  height: 6vh;
+  margin-top:10px;
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 20px;
+  margin: 10px;
+`;
 const IntroContainer = styled.div`
   flex: 1;
   display: flex;
@@ -127,8 +140,9 @@ const IntroContainer = styled.div`
   border-radius: 20px;
 `;
 const UserInfo = styled.div`
-  height: 8vh;
-  margin-top: 5vh;
+  height: 3vh;
+  margin-top: 4vh;
+  margin-bottom: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
