@@ -8,7 +8,8 @@ import { auth, db } from "../firebase";
 import Router from 'next/router';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Chat from "./Chat";
-import { Home, HomeOutlined } from "@material-ui/icons";
+import { Home } from "@material-ui/icons";
+import { useEffect } from "react";
 const Sidebar = () => {
   const [user] = useAuthState(auth);
   const userChatRef = db
@@ -18,7 +19,7 @@ const Sidebar = () => {
   // console.log(chatSnapshot);
   const createChat = () => {
     const input = prompt(
-      "Please enter an emale address for the user you wish to chat with"
+      "Please enter an Email address for the user you wish to chat with"
     );
     if (!input) return;
     if (
@@ -39,7 +40,11 @@ const Sidebar = () => {
       (chat) =>
         chat.data().users.find((users) => users === recipiendEmail)?.length > 0
     );
-
+useEffect(() => {
+  {chatSnapshot?.docs.map((chat) => (
+    console.log(chat.data().users)
+  ))}
+}, [chatSnapshot])
   return (
     <div>
       <Header>
