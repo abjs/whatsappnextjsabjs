@@ -1,13 +1,14 @@
 import { Avatar, Button, IconButton } from "@material-ui/core";
 import styled from "styled-components";
-import ChatIcon from "@material-ui/icons/Chat";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
+import Router from 'next/router';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Chat from "./Chat";
+import { Home, HomeOutlined } from "@material-ui/icons";
 const Sidebar = () => {
   const [user] = useAuthState(auth);
   const userChatRef = db
@@ -42,13 +43,13 @@ const Sidebar = () => {
   return (
     <div>
       <Header>
-        <StyledAvatar src={user.photoURL} onClick={() => auth.signOut()} />
+        <StyledAvatar src={user.photoURL}  />
         <IconsContainer>
-          <IconButton>
-            <ChatIcon />
+          <IconButton onClick={() => Router.push('/')}>
+            <Home/>
           </IconButton>
-          <IconButton>
-            <MoreVertIcon />
+          <IconButton onClick={() => auth.signOut()}>
+            <ExitToAppIcon />
           </IconButton>
         </IconsContainer>
       </Header>

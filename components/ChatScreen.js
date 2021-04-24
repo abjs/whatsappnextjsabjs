@@ -16,7 +16,7 @@ import VideocamIcon from "@material-ui/icons/Videocam";
 // import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Message from "./Message";
-import { useRef,useState } from "react";
+import { useRef, useState } from "react";
 import Search from "@material-ui/icons/Search";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
@@ -40,7 +40,6 @@ export default function ChatScreen({ chat, message }) {
   );
 
   const sendMessage = (e) => {
-    
     e.preventDefault();
     db.collection("users").doc(user.uid).set(
       {
@@ -61,12 +60,12 @@ export default function ChatScreen({ chat, message }) {
     setInput("");
     scrollToBottom();
   };
-  const scrollToBottom =()=>{
+  const scrollToBottom = () => {
     endOfMessagesRef.current.scrollIntoView({
-      behavior:"smooth",
-      block:"start",
+      behavior: "smooth",
+      block: "start",
     });
-}
+  };
   const showmessage = () => {
     if (messageSnapshot) {
       return messageSnapshot.docs.map((message) => (
@@ -129,7 +128,7 @@ export default function ChatScreen({ chat, message }) {
       </Header>
       <MessageContainer>
         {showmessage()}
-        <EndMessage  ref={endOfMessagesRef}/>
+        <EndMessage ref={endOfMessagesRef} />
       </MessageContainer>
       <InputContainer>
         <IconButton>
@@ -186,7 +185,7 @@ const MessageContainer = styled.div`
   min-height: 90vh;
 `;
 const EndMessage = styled.div`
-  margin-bottom:50px;
+  margin-bottom: 50px;
 `;
 const InputContainer = styled.form`
   display: flex;

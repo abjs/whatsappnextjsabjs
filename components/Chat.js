@@ -42,6 +42,9 @@ const Container = styled.div`
   :hover {
     background-color: #e9eaeb;
   }
+  :active{
+    background-color:whitesmoke;
+  }
 `;
 const UserAvatar = styled(Avatar)`
   cursor: pointer;
